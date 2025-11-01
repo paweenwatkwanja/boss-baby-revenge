@@ -13,7 +13,8 @@ import (
 func main() {
 	var shotSequence string
 
-	data, err := ReadDataFromFile("sequence.txt")
+	source := "sequence.txt"
+	data, err := ReadDataFromFile(source)
 	if err != nil {
 		panic(err)
 	}
