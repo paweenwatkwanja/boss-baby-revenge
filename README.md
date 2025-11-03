@@ -19,26 +19,33 @@
 # explanation
 1. time complexity
     - O(1)
-        - From my solution, I think of the best case scenario after I read the conditions: the boss must not shoot first; the shot must be revenged. These could be translated into two conditions that I can evaluate first. For the first condition, the sequence must not start with 'R' and for the second one, the sequence must not end with 'S'. 
+        - It is O(1) for the best case scenario because there are conditions evaluating the input from the very beginning. From the requirements, there are two conditions: the boss must not shoot first; the shot must be revenged. These could be translated into two conditions that I can use first. For the first condition, the sequence must not start with 'R' and for the second one, the sequence must not end with 'S'. 
         
-        Therefore, I use slicing method to achieve these and return the output right after either of these conditions is met. This results in O(1).
+        I then use slicing method to achieve these and return the output right after either of these conditions is met. This process only use one action regardless of how large the size of the input is.
+        
+        Therefore, this results in O(1).
     - O(n)
-        - Even though I try to figure how to use a solution with less time than O(n), I could not think of any solution due to the nature of how this sequence should be processed. That is, there is no clear separation which I can use to process it separately. 
+        - For the average and worst case scenatios, this program has O(n) of time complexity. Even though I try to figure how to use a solution with less time than O(n), I could not think of any solution due to the nature of how this sequence should be processed. That is, there is no clear separation which I can use to process it separately. 
         
-        That's why my solution is to traverse through the sequence. Using loop uses computation resources and I do not want to waste it. Therefore, I come up with an idea of evaluating the conditions while traversing is in process. 
+        That's why my solution is to traverse through the sequence and evaluating the conditions.
 
         Therefore, the time complexity is O(n) for both average and worst cases.
 
 2. space complexity
-    - O(n)
-        - From my solution, the input is a string and its size and memory usage depend upon the size of the input. Therefore, the space complexiy of the input is O(n)
-
     - O(1)
-        - This complexity is for the logic while processing the input. As it uses simple data structure such as a variable with a data type of int for the counter, this kind of variable does not use many resources for each character of the input. The resources do not increase if the input size changes. That's why its space complexity is O(1)
+        - This solution has O(1) space complexity. As it has only a few variables only with simple data types such as an integer, this kind of variable does not use many resources in each iteration. The space resource does not increase if the input size changes. That's why its space complexity is O(1)
+        - e.g.
+            - there are multiple variables in the program
+                - var length int (4 bytes)
+                - bool of isRevengeFirstWithNoShot() (1 byte)
+                - bool of isLastShotWithNoRevenge() (1 byte)
+                - var unrevengedCount int (4 bytes)
+                - var char string (1 byte)
+            - total memory usage is 4 + 1 + 1 + 4 + 1 = 11 bytes for every iteration so it is a constant space complexity.
 
 # input constraints
-- I write a logic to check if the input has lower case letters and white spaces at the beginning and at the end of the input. These will be taken care and the result will be all upper case letters with no white spaces on both ends.
+- I write a logic to check if the input has lower case letters or white spaces at the beginning and at the end of the input. These will be taken care and the result will be all upper case letters with no white spaces on both ends.
 
-- The code also has a logic to check the range of the input. It must be between 1 and 1,000,000
+- The code also has a logic to check the range of the input. It must be between 1 and 1,000,000. If the input is outside of these numbers, the prgram will throw an error.
 
-- For the last logic for validating the input, I intentionally add the logic checking the incorrect elements inside a sequence (apart from 'S' and 'R') to reduce the usage of computation resources. Therefore, while the code is in process checking the shots, if the code finds any character other than 'S' and 'R', it will throw an error because this could be from some user error who accidentally compromises the data.
+- For the last logic, I add the logic checking the incorrect elements inside a sequence (apart from 'S' and 'R'). If the code finds any character other than 'S' and 'R', it will throw an error.
