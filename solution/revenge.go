@@ -14,10 +14,6 @@ const (
 
 func Revenge(shotSequence string) (string, error) {
 	length := len(shotSequence)
-	if err := validateLength(length); err != nil {
-		return "", err
-	}
-
 	if isRevengeFirstWithNoShot(shotSequence) || isLastShotWithNoRevenge(shotSequence, length) {
 		return badBoyOutput, nil
 	}
@@ -32,14 +28,6 @@ func Revenge(shotSequence string) (string, error) {
 	}
 
 	return goodBoyOutput, nil
-}
-
-func validateLength(length int) error {
-	if length < 1 || length > 1000000 {
-		return errors.New("length must be between 1 and 1,000,000")
-	}
-
-	return nil
 }
 
 func isRevengeFirstWithNoShot(shotSequence string) bool {

@@ -3,6 +3,7 @@ package utils
 import (
 	"bufio"
 	"bytes"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -35,4 +36,12 @@ func ReadDataFromFile(source string) ([]byte, error) {
 
 func ConvertInputToCorrectFormat(input string) string {
 	return strings.ToUpper(strings.TrimSpace(input))
+}
+
+func ValidateLength(length int) error {
+	if length < 1 || length > 1000000 {
+		return errors.New("length must be between 1 and 1,000,000")
+	}
+
+	return nil
 }
