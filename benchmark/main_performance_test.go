@@ -1,8 +1,11 @@
-package main
+package main_test
 
 import (
 	"fmt"
 	"testing"
+
+	"github.com/paweenwatkwanja/boss-baby-revenge/solution"
+	"github.com/paweenwatkwanja/boss-baby-revenge/utils"
 )
 
 func BenchmarkRevenge(b *testing.B) {
@@ -17,15 +20,15 @@ func BenchmarkRevenge(b *testing.B) {
 	for i, tc := range testCases {
 		b.Run(fmt.Sprintf("Test Case %v: %v", i+1, tc), func(b *testing.B) {
 			source := fmt.Sprintf("./sequences/%v.txt", tc)
-			data, _ := ReadDataFromFile(source)
+			data, _ := utils.ReadDataFromFile(source)
 
 			shotSequence := string(data)
-			shotSequence = ConvertInputToCorrectFormat(shotSequence)
+			shotSequence = utils.ConvertInputToCorrectFormat(shotSequence)
 
 			b.ResetTimer()
 			b.ReportAllocs()
 
-			revenge(shotSequence)
+			solution.Revenge(shotSequence)
 		})
 	}
 }
