@@ -2,10 +2,7 @@ module github.com/paweenwatkwanja/boss-baby-revenge
 
 go 1.25.1
 
-require (
-	github.com/go-playground/assert/v2 v2.2.0
-	github.com/stretchr/testify v1.11.1
-)
+require github.com/stretchr/testify v1.11.1
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
